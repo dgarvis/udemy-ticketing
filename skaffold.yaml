@@ -15,6 +15,12 @@ build:
       sync:
         manual:
           - src: 'src/**/*.ts'
+            dest: .            
+    - image: dmgarvis/ticketing-client
+      context: client
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: '**/*.js'
             dest: .
-            
-      
