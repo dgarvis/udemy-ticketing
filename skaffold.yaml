@@ -1,9 +1,10 @@
-apiVersion: skaffold/v2alpha3
+apiVersion: skaffold/v3
 kind: Config
+manifests:
+  rawYaml:
+    - ./infra/k8s/*
 deploy:
   kubectl:
-    manifests:
-      - ./infra/k8s/*
 build:
   local:
     push: false
@@ -12,6 +13,9 @@ build:
       context: auth
       docker:
         dockerfile: Dockerfile
+        secrets:
+          - id: npmrc
+            src: ~/.npmrc
       sync:
         manual:
           - src: 'src/**/*.ts'
