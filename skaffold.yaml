@@ -8,6 +8,7 @@ deploy:
 build:
   local:
     push: false
+    useBuildkit: true
   artifacts:
     - image: dmgarvis/ticketing-auth
       context: auth
